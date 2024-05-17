@@ -21,7 +21,7 @@ Public Class FrmConsultaCliente
                             from pessoas p
                             inner join
                             cidades c on c.id_cidade = p.id_cidade
-                            where (PATINDEX('%" & TPesquisa.Text & "%',p.nome)>0)
+                            where (PATINDEX('%" & TPesquisa.Text & "%',p.nome)>0)   or (PATINDEX('%" & TPesquisa.Text & "%',p.documento)>0)
                             order by p.nome"
                 '(PATINDEX('%" & txtpesquisa.Text & "%',a.nome)>0)
                 Using dap = New SqlDataAdapter(sql, cn)
@@ -43,4 +43,7 @@ Public Class FrmConsultaCliente
         TPesquisa.Text = ""
     End Sub
 
+    Private Sub BtPesquisa_Click(sender As Object, e As EventArgs) Handles BtPesquisa.Click
+        carregagridcliente()
+    End Sub
 End Class
