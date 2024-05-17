@@ -40,6 +40,7 @@ Partial Class Frm_Principal
         StVersaoDb = New ToolStripMenuItem()
         BuscarDadosDoSistemaToolStripMenuItem = New ToolStripMenuItem()
         EmpresaToolStripMenuItem = New ToolStripMenuItem()
+        ItauToolStripMenuItem = New ToolStripMenuItem()
         TlbNomeusuario = New ToolStripStatusLabel()
         ToolStripStatusLabel1 = New ToolStripStatusLabel()
         ToolTip = New ToolTip(components)
@@ -80,7 +81,6 @@ Partial Class Frm_Principal
         BtEmail = New Button()
         BtServidor = New Button()
         BtEquipamentos = New Button()
-        ItauToolStripMenuItem = New ToolStripMenuItem()
         StatusStrip.SuspendLayout()
         PanelLateral.SuspendLayout()
         CType(PictureBox1, ComponentModel.ISupportInitialize).BeginInit()
@@ -172,6 +172,11 @@ Partial Class Frm_Principal
         EmpresaToolStripMenuItem.Name = "EmpresaToolStripMenuItem"
         EmpresaToolStripMenuItem.Size = New Size(204, 22)
         EmpresaToolStripMenuItem.Text = "Empresa"' 
+        ' ItauToolStripMenuItem
+        ' 
+        ItauToolStripMenuItem.Name = "ItauToolStripMenuItem"
+        ItauToolStripMenuItem.Size = New Size(204, 22)
+        ItauToolStripMenuItem.Text = "Itau"' 
         ' TlbNomeusuario
         ' 
         TlbNomeusuario.Name = "TlbNomeusuario"
@@ -665,11 +670,6 @@ Partial Class Frm_Principal
         BtEquipamentos.TextAlign = ContentAlignment.BottomCenter
         BtEquipamentos.UseVisualStyleBackColor = True
         ' 
-        ' ItauToolStripMenuItem
-        ' 
-        ItauToolStripMenuItem.Name = "ItauToolStripMenuItem"
-        ItauToolStripMenuItem.Size = New Size(204, 22)
-        ItauToolStripMenuItem.Text = "Itau"' 
         ' Frm_Principal
         ' 
         AutoScaleDimensions = New SizeF(7F, 15F)

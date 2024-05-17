@@ -381,8 +381,8 @@ Public Class Frm_Principal
         PanelCadastro.Visible = False
         Label8.Text = "Cadastro"
         Label9.Text = "Cadastro de Cliente"
-        Frm_Cliente.MdiParent = Me
-        Frm_Cliente.Show()
+        FrmConsultaCliente.MdiParent = Me
+        FrmConsultaCliente.Show()
     End Sub
 
     Private Sub ItauToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles ItauToolStripMenuItem.Click
