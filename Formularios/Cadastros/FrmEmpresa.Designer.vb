@@ -25,6 +25,7 @@ Partial Class FrmEmpresa
         Dim resources As ComponentModel.ComponentResourceManager = New ComponentModel.ComponentResourceManager(GetType(FrmEmpresa))
         Label1 = New Label()
         GroupBox1 = New GroupBox()
+        CbCidade = New ComboBox()
         Button1 = New Button()
         Label19 = New Label()
         TCodigo = New TextBox()
@@ -43,7 +44,6 @@ Partial Class FrmEmpresa
         Label14 = New Label()
         TObs = New TextBox()
         Label13 = New Label()
-        CbCidade = New ComboBox()
         Label12 = New Label()
         CbTipo = New ComboBox()
         Label7 = New Label()
@@ -85,6 +85,7 @@ Partial Class FrmEmpresa
         Label1.Text = "CPF:"' 
         ' GroupBox1
         ' 
+        GroupBox1.Controls.Add(CbCidade)
         GroupBox1.Controls.Add(Button1)
         GroupBox1.Controls.Add(Label19)
         GroupBox1.Controls.Add(TCodigo)
@@ -103,7 +104,6 @@ Partial Class FrmEmpresa
         GroupBox1.Controls.Add(Label14)
         GroupBox1.Controls.Add(TObs)
         GroupBox1.Controls.Add(Label13)
-        GroupBox1.Controls.Add(CbCidade)
         GroupBox1.Controls.Add(Label12)
         GroupBox1.Controls.Add(CbTipo)
         GroupBox1.Controls.Add(Label7)
@@ -126,10 +126,19 @@ Partial Class FrmEmpresa
         GroupBox1.Controls.Add(Label3)
         GroupBox1.Location = New Point(12, 12)
         GroupBox1.Name = "GroupBox1"
-        GroupBox1.Size = New Size(874, 261)
+        GroupBox1.Size = New Size(874, 274)
         GroupBox1.TabIndex = 2
         GroupBox1.TabStop = False
         GroupBox1.Text = "Dados principais:"' 
+        ' CbCidade
+        ' 
+        CbCidade.Font = New Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point)
+        CbCidade.FormattingEnabled = True
+        CbCidade.Location = New Point(326, 158)
+        CbCidade.Name = "CbCidade"
+        CbCidade.Size = New Size(216, 29)
+        CbCidade.TabIndex = 10
+        ' 
         ' Button1
         ' 
         Button1.Image = CType(resources.GetObject("Button1.Image"), Image)
@@ -164,15 +173,18 @@ Partial Class FrmEmpresa
         Label18.Name = "Label18"
         Label18.Size = New Size(48, 15)
         Label18.TabIndex = 41
-        Label18.Text = "Motivo:"' 
+        Label18.Text = "Motivo:"
+        Label18.Visible = False
+        ' 
         ' Tmotivo
         ' 
         Tmotivo.CharacterCasing = CharacterCasing.Upper
         Tmotivo.Font = New Font("Segoe UI", 11.25F, FontStyle.Regular, GraphicsUnit.Point)
-        Tmotivo.Location = New Point(716, 225)
+        Tmotivo.Location = New Point(733, 220)
         Tmotivo.Name = "Tmotivo"
         Tmotivo.Size = New Size(82, 27)
         Tmotivo.TabIndex = 40
+        Tmotivo.Visible = False
         ' 
         ' LSit
         ' 
@@ -181,7 +193,9 @@ Partial Class FrmEmpresa
         LSit.Name = "LSit"
         LSit.Size = New Size(52, 15)
         LSit.TabIndex = 37
-        LSit.Text = "Situacao"' 
+        LSit.Text = "Situacao"
+        LSit.Visible = False
+        ' 
         ' Label16
         ' 
         Label16.AutoSize = True
@@ -290,18 +304,6 @@ Partial Class FrmEmpresa
         Label13.Size = New Size(47, 15)
         Label13.TabIndex = 25
         Label13.Text = "Cidade:"' 
-        ' CbCidade
-        ' 
-        CbCidade.AutoCompleteMode = AutoCompleteMode.SuggestAppend
-        CbCidade.AutoCompleteSource = AutoCompleteSource.ListItems
-        CbCidade.DropDownStyle = ComboBoxStyle.DropDownList
-        CbCidade.Font = New Font("Segoe UI", 11.25F, FontStyle.Regular, GraphicsUnit.Point)
-        CbCidade.FormattingEnabled = True
-        CbCidade.Location = New Point(329, 157)
-        CbCidade.Name = "CbCidade"
-        CbCidade.Size = New Size(213, 28)
-        CbCidade.TabIndex = 10
-        ' 
         ' Label12
         ' 
         Label12.AutoSize = True
@@ -485,9 +487,9 @@ Partial Class FrmEmpresa
         Panel1.Controls.Add(BtNovo)
         Panel1.Controls.Add(BtCancelar)
         Panel1.Dock = DockStyle.Bottom
-        Panel1.Location = New Point(0, 279)
+        Panel1.Location = New Point(0, 319)
         Panel1.Name = "Panel1"
-        Panel1.Size = New Size(898, 50)
+        Panel1.Size = New Size(895, 50)
         Panel1.TabIndex = 41
         ' 
         ' BtSalvar
@@ -610,7 +612,7 @@ Partial Class FrmEmpresa
         ' 
         AutoScaleDimensions = New SizeF(7F, 15F)
         AutoScaleMode = AutoScaleMode.Font
-        ClientSize = New Size(898, 329)
+        ClientSize = New Size(895, 369)
         Controls.Add(Panel1)
         Controls.Add(GroupBox1)
         FormBorderStyle = FormBorderStyle.SizableToolWindow
@@ -671,4 +673,5 @@ Partial Class FrmEmpresa
     Friend WithEvents Button1 As Button
     Friend WithEvents Label19 As Label
     Friend WithEvents TCodigo As TextBox
+
 End Class

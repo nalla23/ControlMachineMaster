@@ -12,6 +12,9 @@ Public Class FrmEmpresa
         BtEditar.Visible = True
         BtAtualizar.Visible = False
         BtFechar.Enabled = True
+        CbTipo.Enabled = True
+        Tdoc.Enabled = True
+        TNome.Enabled = True
     End Sub
 
     Private Sub controlebotoesfinal()
@@ -30,6 +33,9 @@ Public Class FrmEmpresa
         BtEditar.Visible = False
         BtAtualizar.Visible = True
         BtFechar.Enabled = False
+        CbTipo.Enabled = False
+        Tdoc.Enabled = False
+        TNome.Enabled = False
     End Sub
     Private Sub BtFechar_Click(sender As Object, e As EventArgs) Handles BtFechar.Click
         Close()
@@ -39,6 +45,8 @@ Public Class FrmEmpresa
         controlebotoesinicial()
         Tdoc.Enabled = False
         Selecionaempresapadrao()
+        CarregaCidade()
+        CbCidade.SelectedIndex = -1
     End Sub
     Public Sub ObterCnpj(cnpj As String)
         Try
@@ -108,7 +116,7 @@ Public Class FrmEmpresa
         Try
             Using cn = New SqlConnection(strcon)
                 cn.Open()
-                Dim sql = "SELECT COUNT(*) FROM empresa"
+                Dim sql = "SELECT COUNT(*) FROM EMPRESA"
                 Dim registroExiste As Boolean = False
                 Using cmd = New SqlCommand(sql, cn)
                     ' Executar comando e obter o número de registros
@@ -116,7 +124,6 @@ Public Class FrmEmpresa
                     ' Se count for maior que 0, significa que existem registros na tabela
                     If count > 0 Then
                         registroExiste = True
-                        BtNovo.Enabled = False
                         BtSalvar.Enabled = False
                     End If
                 End Using
@@ -125,6 +132,7 @@ Public Class FrmEmpresa
                     MessageBox.Show("Não existem registros no banco de dados, favor inserir os dados da empresa.")
                     BtNovo.Enabled = True
                     BtSalvar.Enabled = True
+
                 End If
 
                 ' Retornar o resultado da verificação
@@ -277,10 +285,10 @@ Public Class FrmEmpresa
         End Try
     End Sub
 
-    Private Sub CbCidade_GotFocus(sender As Object, e As EventArgs) Handles CbCidade.GotFocus
+    Private Sub CbCidade_GotFocus(sender As Object, e As EventArgs)
         CarregaCidade()
     End Sub
-    Private Sub CbCidade_LostFocus(sender As Object, e As EventArgs) Handles CbCidade.LostFocus
+    Private Sub CbCidade_LostFocus(sender As Object, e As EventArgs)
         CarregaUF()
     End Sub
 
@@ -296,14 +304,16 @@ Public Class FrmEmpresa
             TUF.Text = ds.Tables(0).Rows(0)("uf").ToString()
 
         Catch ex As Exception
-            MessageBox.Show("Err:" & ex.Message, "Err", MessageBoxButtons.OK, MessageBoxIcon.Error)
+            MessageBox.Show("Erro:" & ex.Message, "Aviso!", MessageBoxButtons.OK, MessageBoxIcon.Error)
         End Try
     End Sub
     Private Sub Selecionaempresapadrao()
+        CarregaCidade()
+
         Try
             Using cn = New SqlConnection(strcon)
                 cn.Open()
-                Dim sql = "SELECT E.*, C.NOME CIDADE, C.UF UF, C.ID_CIDADE
+                Dim sql = "SELECT E.*, C.NOME nCidade, C.UF UF, C.ID_CIDADE
                             FROM EMPRESA E
                             INNER JOIN
                             CIDADES C ON C.ID_CIDADE = E.ID_CIDADE
@@ -322,7 +332,8 @@ Public Class FrmEmpresa
                                 TEnde.Text = dr("ENDERECO")
                                 Tnumero.Text = dr("NUMERO")
                                 TBairro.Text = dr("BAIRRO")
-                                CbCidade.SelectedItem = dr("CIDADE")
+                                CbCidade.Text = dr("ncidade")
+                                CbCidade.Text = dr("ncidade")
                                 TUF.Text = dr("UF")
                                 TFone.Text = dr("FONE")
                                 TCel.Text = dr("CELULAR")
@@ -336,7 +347,8 @@ Public Class FrmEmpresa
                 cn.Close()
             End Using
         Catch ex As Exception
-            Dim unused = MsgBox("Algo deu errado com a conexão, #selecionaitem!" & vbNewLine & vbNewLine & ex.Message, vbCritical)
+            MessageBox.Show("Algo deu errado com a conexão, #selecionaitem!:" & ex.Message, "Aviso!", MessageBoxButtons.OK, MessageBoxIcon.Error)
+
         End Try
     End Sub
 
