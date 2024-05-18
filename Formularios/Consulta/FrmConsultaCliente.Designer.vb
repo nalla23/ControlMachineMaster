@@ -31,6 +31,7 @@ Partial Class FrmConsultaCliente
         GDados = New GroupBox()
         BtCadastro = New Button()
         BtFechar = New Button()
+        Label2 = New Label()
         Gpesquisa.SuspendLayout()
         CType(DgCliente, ComponentModel.ISupportInitialize).BeginInit()
         GDados.SuspendLayout()
@@ -89,7 +90,7 @@ Partial Class FrmConsultaCliente
         DgCliente.AllowUserToDeleteRows = False
         DgCliente.AllowUserToResizeRows = False
         DgCliente.BackgroundColor = SystemColors.Window
-        DgCliente.BorderStyle = BorderStyle.None
+        DgCliente.BorderStyle = BorderStyle.Fixed3D
         DgCliente.CellBorderStyle = DataGridViewCellBorderStyle.None
         DgCliente.ColumnHeadersBorderStyle = DataGridViewHeaderBorderStyle.None
         DgCliente.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize
@@ -133,11 +134,20 @@ Partial Class FrmConsultaCliente
         BtFechar.Text = "Fechar"
         BtFechar.UseVisualStyleBackColor = True
         ' 
+        ' Label2
+        ' 
+        Label2.AutoSize = True
+        Label2.Location = New Point(538, 515)
+        Label2.Name = "Label2"
+        Label2.Size = New Size(128, 15)
+        Label2.TabIndex = 5
+        Label2.Text = "Quantidade de registro"' 
         ' FrmConsultaCliente
         ' 
         AutoScaleDimensions = New SizeF(7F, 15F)
         AutoScaleMode = AutoScaleMode.Font
         ClientSize = New Size(976, 552)
+        Controls.Add(Label2)
         Controls.Add(BtFechar)
         Controls.Add(BtCadastro)
         Controls.Add(GDados)
@@ -153,6 +163,7 @@ Partial Class FrmConsultaCliente
         GDados.ResumeLayout(False)
         GDados.PerformLayout()
         ResumeLayout(False)
+        PerformLayout()
     End Sub
 
     Friend WithEvents BtSeleciona As Button
@@ -164,4 +175,5 @@ Partial Class FrmConsultaCliente
     Friend WithEvents GDados As GroupBox
     Friend WithEvents BtCadastro As Button
     Friend WithEvents BtFechar As Button
+    Friend WithEvents Label2 As Label
 End Class

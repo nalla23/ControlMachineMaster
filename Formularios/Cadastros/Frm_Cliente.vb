@@ -82,6 +82,13 @@ Public Class Frm_Cliente
     End Sub
     Private Sub Frm_Cliente_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         controlebotoesinicial()
+        TCodigo.Text = campo(0)
+        If TCodigo.Text > 0 Then
+            SELECIONADADOS()
+        Else
+            MsgBox("sem regitro.")
+        End If
+
     End Sub
     Private Sub ObterCnpj(cnpj As String)
         Try
@@ -272,6 +279,62 @@ Public Class Frm_Cliente
                 Next
             End If
         Next
+    End Sub
+
+
+    Private Sub SELECIONADADOS()
+
+        ' Tcodigo.Text = id
+
+        Try
+            Using cn = New SqlConnection(strcon)
+                cn.Close()
+                cn.Open()
+                Dim sql = "select p.*,c.nome cidade, c.uf uf
+                            from pessoas p
+                            inner join
+                            cidades c on c.id_cidade = p.id_cidade
+                            where id_pessoa =" & campo(0)
+                Using cmd = New SqlCommand(sql, cn)
+                    Using dr = cmd.ExecuteReader
+                        If dr.HasRows Then
+                            If dr.Read Then
+                                If dr("tipopessoa") Then
+                                    CbTipo.Text = "1-CPF"
+                                Else
+                                    CbTipo.Text = "2-CNPJ"
+                                End If
+                                TCodigo.Text = dr("codigo")
+                                TNome.Text = dr("nome")
+                                TApelido.Text = dr("apelido")
+                                Tdoc.Text = dr("documento")
+                                TReg.Text = dr("rg")
+                                TCep.Text = dr("cep")
+                                TEnde.Text = dr("endereco")
+                                Tnumero.Text = dr("numero")
+                                TBairro.Text = dr("bairro")
+                                CbCidade.Text = dr("id_cidade")
+                                TUF.Text = dr("uf")
+                                TFone.Text = dr("fone")
+                                TCel.Text = dr("celular")
+                                TEmail.Text = dr("email")
+                                If dr("ATIVO") Then
+                                    CbAtivo.Text = "SIM"
+                                Else
+                                    CbAtivo.Text = "NÃO"
+                                End If
+                                DtCad.Text = dr("datacad")
+                                TObs.Text = dr("obs")
+                                TComp.Text = dr("comp")
+                            End If
+                        End If
+                    End Using
+                End Using
+            End Using
+        Catch ex As Exception
+            Dim unused = MsgBox("Algo deu errado com a conexão!" & vbNewLine & vbNewLine & ex.Message, vbCritical)
+        End Try
+
     End Sub
 
 End Class
