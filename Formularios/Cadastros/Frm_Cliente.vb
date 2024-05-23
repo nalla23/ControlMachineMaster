@@ -284,25 +284,25 @@ Public Class Frm_Cliente
 
     Private Sub SELECIONADADOS()
 
-        ' Tcodigo.Text = id
+        Dim codigo = campo(0)
 
         Try
             Using cn = New SqlConnection(strcon)
                 cn.Close()
                 cn.Open()
-                Dim sql = "select p.*,c.nome cidade, c.uf uf
+                Dim sql = "select p.*,c.nome as cidade, c.uf uf,p.ativo
                             from pessoas p
                             inner join
                             cidades c on c.id_cidade = p.id_cidade
-                            where id_pessoa =" & campo(0)
+                            where id_pessoa =" & codigo
                 Using cmd = New SqlCommand(sql, cn)
                     Using dr = cmd.ExecuteReader
                         If dr.HasRows Then
                             If dr.Read Then
-                                If dr("tipopessoa") Then
-                                    CbTipo.Text = "1-CPF"
-                                Else
+                                If dr("TIPOPESSOA") Then
                                     CbTipo.Text = "2-CNPJ"
+                                Else
+                                    CbTipo.Text = "1-CPF"
                                 End If
                                 TCodigo.Text = dr("codigo")
                                 TNome.Text = dr("nome")
@@ -313,7 +313,7 @@ Public Class Frm_Cliente
                                 TEnde.Text = dr("endereco")
                                 Tnumero.Text = dr("numero")
                                 TBairro.Text = dr("bairro")
-                                CbCidade.Text = dr("id_cidade")
+                                CbCidade.Text = dr("cidade")
                                 TUF.Text = dr("uf")
                                 TFone.Text = dr("fone")
                                 TCel.Text = dr("celular")
@@ -337,4 +337,7 @@ Public Class Frm_Cliente
 
     End Sub
 
+    Private Sub Button2_Click(sender As Object, e As EventArgs) Handles Button2.Click
+        SELECIONADADOS()
+    End Sub
 End Class

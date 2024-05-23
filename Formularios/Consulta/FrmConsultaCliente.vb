@@ -11,6 +11,7 @@ Public Class FrmConsultaCliente
 
     Private Sub FrmConsultaCliente_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         carregagridcliente()
+        FrmFormulario.ContarLinhasGrid(DgCliente, Lbcontalinhas)
     End Sub
     Private Sub carregagridcliente()
         Try
@@ -21,7 +22,7 @@ Public Class FrmConsultaCliente
                             from pessoas p
                             inner join
                             cidades c on c.id_cidade = p.id_cidade
-                            where (PATINDEX('%" & TPesquisa.Text & "%',p.nome)>0)   or (PATINDEX('%" & TPesquisa.Text & "%',p.documento)>0) 
+                            where (PATINDEX('%" & TPesquisa.Text & "%',p.nome)>0)   or (PATINDEX('%" & TPesquisa.Text & "%',p.documento)>0) or  (PATINDEX('%" & TPesquisa.Text & "%',p.apelido)>0)
                             order by p.nome"
                 '(PATINDEX('%" & txtpesquisa.Text & "%',a.nome)>0)
                 Using dap = New SqlDataAdapter(sql, cn)
@@ -29,21 +30,32 @@ Public Class FrmConsultaCliente
                         dap.Fill(dt)
                         DgCliente.DataSource = dt
                         With DgCliente 'with significa com e substitui variavel a frente dele
+                            .Columns(0).HeaderText = "ID_CLIENTE"
                             .Columns(0).Width = 80
-                            .Columns(0).HeaderText = "A"
-                            ' .Columns(0).Visible = False
-                            .Columns(1).Width = 460
-                            .Columns(1).HeaderText = "AW"
-                            .Columns(2).Width = 80
-                            .Columns(3).Width = 460
-                            .Columns(4).Width = 80
-                            .Columns(5).Width = 460
-                            .Columns(6).Width = 80
-                            .Columns(7).Width = 460
-                            .Columns(8).Width = 80
-                            .Columns(9).Width = 460
-                            .Columns(10).Width = 80
-                            .Columns(11).Width = 460
+                            .Columns(0).Visible = False
+                            .Columns(1).HeaderText = "Código"
+                            .Columns(1).Width = 60
+                            .Columns(2).HeaderText = "Nome\Razão"
+                            .Columns(2).Width = 250
+                            .Columns(3).HeaderText = "Apelido\Fantasia"
+                            .Columns(3).Width = 200
+                            .Columns(4).HeaderText = "Documento"
+                            .Columns(4).Width = 120
+                            .Columns(5).HeaderText = "Registro"
+                            .Columns(5).Width = 80
+                            .Columns(6).HeaderText = "Cidade"
+                            .Columns(6).Width = 120
+                            .Columns(7).HeaderText = "UF"
+                            .Columns(7).Width = 30
+                            .Columns(8).HeaderText = "Endereço"
+                            .Columns(8).Width = 150
+                            .Columns(9).HeaderText = "Número"
+                            .Columns(9).Width = 80
+                            .Columns(10).HeaderText = "Bairro"
+                            .Columns(10).Width = 100
+                            .Columns(11).HeaderText = "Telefone"
+                            .Columns(11).Width = 80
+
 
                         End With
                     End Using
@@ -60,9 +72,7 @@ Public Class FrmConsultaCliente
     End Sub
 
     Private Sub BtSeleciona_Click(sender As Object, e As EventArgs) Handles BtSeleciona.Click
-
         Frm_Cliente.ShowDialog()
-        Label2.Text = campo(0)
     End Sub
 
     Private Sub DgCliente_CellContentClick(sender As Object, e As DataGridViewCellEventArgs) Handles DgCliente.CellContentClick
@@ -73,5 +83,11 @@ Public Class FrmConsultaCliente
         With DgCliente.Rows(DgCliente.CurrentCell.RowIndex)
             campo(0) = .Cells("id_pessoa").Value
         End With
+    End Sub
+    Private Sub TPesquisa_KeyPress(sender As Object, e As KeyPressEventArgs) Handles TPesquisa.KeyPress
+        If e.KeyChar = Convert.ToChar(13) Then
+            SendKeys.Send("{TAB}")
+            carregagridcliente()
+        End If
     End Sub
 End Class

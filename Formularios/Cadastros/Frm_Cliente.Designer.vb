@@ -24,6 +24,8 @@ Partial Class Frm_Cliente
     Private Sub InitializeComponent()
         Dim resources As ComponentModel.ComponentResourceManager = New ComponentModel.ComponentResourceManager(GetType(Frm_Cliente))
         Panel1 = New Panel()
+        Button2 = New Button()
+        Button1 = New Button()
         BtSalvar = New Button()
         BtAtualizar = New Button()
         BtFechar = New Button()
@@ -71,7 +73,6 @@ Partial Class Frm_Cliente
         Label1 = New Label()
         Label3 = New Label()
         TComp = New TextBox()
-        Button1 = New Button()
         Panel1.SuspendLayout()
         GroupBox1.SuspendLayout()
         SuspendLayout()
@@ -79,6 +80,7 @@ Partial Class Frm_Cliente
         ' Panel1
         ' 
         Panel1.BackColor = Color.FromArgb(CByte(51), CByte(51), CByte(76))
+        Panel1.Controls.Add(Button2)
         Panel1.Controls.Add(Button1)
         Panel1.Controls.Add(BtSalvar)
         Panel1.Controls.Add(BtAtualizar)
@@ -92,6 +94,24 @@ Partial Class Frm_Cliente
         Panel1.Name = "Panel1"
         Panel1.Size = New Size(659, 50)
         Panel1.TabIndex = 43
+        ' 
+        ' Button2
+        ' 
+        Button2.Location = New Point(569, 15)
+        Button2.Name = "Button2"
+        Button2.Size = New Size(75, 23)
+        Button2.TabIndex = 33
+        Button2.Text = "testar selecionar dados"
+        Button2.UseVisualStyleBackColor = True
+        ' 
+        ' Button1
+        ' 
+        Button1.Location = New Point(464, 3)
+        Button1.Name = "Button1"
+        Button1.Size = New Size(75, 23)
+        Button1.TabIndex = 32
+        Button1.Text = "Limpar campos"
+        Button1.UseVisualStyleBackColor = True
         ' 
         ' BtSalvar
         ' 
@@ -428,7 +448,6 @@ Partial Class Frm_Cliente
         Label13.Text = "Cidade:"' 
         ' CbCidade
         ' 
-        CbCidade.DropDownStyle = ComboBoxStyle.DropDownList
         CbCidade.Font = New Font("Segoe UI", 11.25F, FontStyle.Regular, GraphicsUnit.Point)
         CbCidade.FormattingEnabled = True
         CbCidade.Location = New Point(302, 157)
@@ -627,15 +646,6 @@ Partial Class Frm_Cliente
         TComp.Size = New Size(211, 27)
         TComp.TabIndex = 19
         ' 
-        ' Button1
-        ' 
-        Button1.Location = New Point(541, 22)
-        Button1.Name = "Button1"
-        Button1.Size = New Size(75, 23)
-        Button1.TabIndex = 32
-        Button1.Text = "Button1"
-        Button1.UseVisualStyleBackColor = True
-        ' 
         ' Frm_Cliente
         ' 
         AutoScaleDimensions = New SizeF(7F, 15F)
@@ -700,4 +710,5 @@ Partial Class Frm_Cliente
     Friend WithEvents Label19 As Label
     Friend WithEvents TComp As TextBox
     Friend WithEvents Button1 As Button
+    Friend WithEvents Button2 As Button
 End Class

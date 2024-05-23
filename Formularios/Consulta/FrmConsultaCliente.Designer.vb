@@ -23,7 +23,7 @@ Partial Class FrmConsultaCliente
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
         BtSeleciona = New Button()
-        Label1 = New Label()
+        Lbcontalinhas = New Label()
         TPesquisa = New TextBox()
         Gpesquisa = New GroupBox()
         BtPesquisa = New Button()
@@ -31,7 +31,6 @@ Partial Class FrmConsultaCliente
         GDados = New GroupBox()
         BtCadastro = New Button()
         BtFechar = New Button()
-        Label2 = New Label()
         Gpesquisa.SuspendLayout()
         CType(DgCliente, ComponentModel.ISupportInitialize).BeginInit()
         GDados.SuspendLayout()
@@ -42,18 +41,18 @@ Partial Class FrmConsultaCliente
         BtSeleciona.Location = New Point(16, 505)
         BtSeleciona.Name = "BtSeleciona"
         BtSeleciona.Size = New Size(90, 35)
-        BtSeleciona.TabIndex = 0
+        BtSeleciona.TabIndex = 4
         BtSeleciona.Text = "Seleciona"
         BtSeleciona.UseVisualStyleBackColor = True
         ' 
-        ' Label1
+        ' Lbcontalinhas
         ' 
-        Label1.AutoSize = True
-        Label1.Location = New Point(6, 425)
-        Label1.Name = "Label1"
-        Label1.Size = New Size(128, 15)
-        Label1.TabIndex = 1
-        Label1.Text = "Quantidade de registro"' 
+        Lbcontalinhas.AutoSize = True
+        Lbcontalinhas.Location = New Point(6, 425)
+        Lbcontalinhas.Name = "Lbcontalinhas"
+        Lbcontalinhas.Size = New Size(128, 15)
+        Lbcontalinhas.TabIndex = 1
+        Lbcontalinhas.Text = "Quantidade de registro"' 
         ' TPesquisa
         ' 
         TPesquisa.CharacterCasing = CharacterCasing.Upper
@@ -80,7 +79,7 @@ Partial Class FrmConsultaCliente
         BtPesquisa.Location = New Point(844, 21)
         BtPesquisa.Name = "BtPesquisa"
         BtPesquisa.Size = New Size(104, 23)
-        BtPesquisa.TabIndex = 3
+        BtPesquisa.TabIndex = 2
         BtPesquisa.Text = "Pesquisa"
         BtPesquisa.UseVisualStyleBackColor = True
         ' 
@@ -90,7 +89,6 @@ Partial Class FrmConsultaCliente
         DgCliente.AllowUserToDeleteRows = False
         DgCliente.AllowUserToResizeRows = False
         DgCliente.BackgroundColor = SystemColors.Window
-        DgCliente.BorderStyle = BorderStyle.Fixed3D
         DgCliente.CellBorderStyle = DataGridViewCellBorderStyle.None
         DgCliente.ColumnHeadersBorderStyle = DataGridViewHeaderBorderStyle.None
         DgCliente.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize
@@ -99,17 +97,17 @@ Partial Class FrmConsultaCliente
         DgCliente.MultiSelect = False
         DgCliente.Name = "DgCliente"
         DgCliente.ReadOnly = True
-        DgCliente.RowHeadersBorderStyle = DataGridViewHeaderBorderStyle.Single
+        DgCliente.RowHeadersBorderStyle = DataGridViewHeaderBorderStyle.None
         DgCliente.RowHeadersVisible = False
         DgCliente.RowTemplate.Height = 25
         DgCliente.SelectionMode = DataGridViewSelectionMode.FullRowSelect
         DgCliente.Size = New Size(942, 400)
-        DgCliente.TabIndex = 4
+        DgCliente.TabIndex = 3
         ' 
         ' GDados
         ' 
         GDados.Controls.Add(DgCliente)
-        GDados.Controls.Add(Label1)
+        GDados.Controls.Add(Lbcontalinhas)
         GDados.Location = New Point(10, 56)
         GDados.Name = "GDados"
         GDados.Size = New Size(954, 443)
@@ -121,7 +119,7 @@ Partial Class FrmConsultaCliente
         BtCadastro.Location = New Point(112, 505)
         BtCadastro.Name = "BtCadastro"
         BtCadastro.Size = New Size(90, 35)
-        BtCadastro.TabIndex = 6
+        BtCadastro.TabIndex = 5
         BtCadastro.Text = "Cadastro"
         BtCadastro.UseVisualStyleBackColor = True
         ' 
@@ -130,24 +128,15 @@ Partial Class FrmConsultaCliente
         BtFechar.Location = New Point(208, 505)
         BtFechar.Name = "BtFechar"
         BtFechar.Size = New Size(90, 35)
-        BtFechar.TabIndex = 7
+        BtFechar.TabIndex = 6
         BtFechar.Text = "Fechar"
         BtFechar.UseVisualStyleBackColor = True
         ' 
-        ' Label2
-        ' 
-        Label2.AutoSize = True
-        Label2.Location = New Point(538, 515)
-        Label2.Name = "Label2"
-        Label2.Size = New Size(128, 15)
-        Label2.TabIndex = 5
-        Label2.Text = "Quantidade de registro"' 
         ' FrmConsultaCliente
         ' 
         AutoScaleDimensions = New SizeF(7F, 15F)
         AutoScaleMode = AutoScaleMode.Font
         ClientSize = New Size(976, 552)
-        Controls.Add(Label2)
         Controls.Add(BtFechar)
         Controls.Add(BtCadastro)
         Controls.Add(GDados)
@@ -163,11 +152,10 @@ Partial Class FrmConsultaCliente
         GDados.ResumeLayout(False)
         GDados.PerformLayout()
         ResumeLayout(False)
-        PerformLayout()
     End Sub
 
     Friend WithEvents BtSeleciona As Button
-    Friend WithEvents Label1 As Label
+    Friend WithEvents Lbcontalinhas As Label
     Friend WithEvents TPesquisa As TextBox
     Friend WithEvents Gpesquisa As GroupBox
     Friend WithEvents DgCliente As DataGridView
@@ -175,5 +163,4 @@ Partial Class FrmConsultaCliente
     Friend WithEvents GDados As GroupBox
     Friend WithEvents BtCadastro As Button
     Friend WithEvents BtFechar As Button
-    Friend WithEvents Label2 As Label
 End Class
